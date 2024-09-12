@@ -1,0 +1,36 @@
+- Z80 Emulator
+  - Gameboy emulator
+- Mini programming language
+  - Scientific calculator
+  - Json parser
+- Videogame
+- Video / Audio encoder
+- Trading engine
+- Auction house
+- Regex engine
+- Data structures
+  - Examples: C Template library, GLib, Boost Heaps, Abseil data structures
+  - Hash Table
+  - Trie
+  - Rope
+  - B-Tree
+  - LRU Cache
+- Matrix library
+- Modular integers library
+- Galois field library
+- Gist clone
+- Static website generator
+- Pastebin
+- Fuzzy text search / Text autocomplete
+- Parallel data structures
+- HTTP server
+- IRC bot
+- Go game engine
+- Encryption algorithms
+- Hashing algorithms (explore collisions)
+
+More lists:
+- https://github.com/faker1237/Project-Based-Tutorials-in-C
+- https://github.com/ashishps1/awesome-coding-projects
+- https://github.com/practical-tutorials/project-based-learning
+- https://github.com/vicky002/1000_Projects
