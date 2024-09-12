@@ -256,3 +256,44 @@ server {
 
 }
 ```
+> port redirection
+```nginx
+server {
+  server_name trucazos.net www.trucazos.net;
+  error_log /var/log/nginx/trucazos.net.error.log;
+  access_log off;
+
+  location / {
+    access_log /var/log/nginx/trucazos.net.access.log;
+    proxy_pass  http://127.0.0.1:9000/;
+  }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/trucazos.net/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/trucazos.net/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+}
+server {
+    if ($host = www.trucazos.net) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    if ($host = trucazos.net) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+  server_name trucazos.net www.trucazos.net;
+
+  listen 80;
+    return 404; # managed by Certbot
+
+
+
+
+}
+```
