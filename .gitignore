@@ -1,0 +1,14 @@
+# ignore all
+*
+
+# except source files in these folders
+!notes/
+
+# except markdown files
+!*.md
+
+# dont ignore gitignore
+!.gitignore
+
+# whitelist the license
+!LICENSE
