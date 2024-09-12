@@ -3,6 +3,7 @@
 
 # except source files in these folders
 !notes/
+!snippets/
 
 # except markdown files
 !*.md
