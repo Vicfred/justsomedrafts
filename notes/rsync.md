@@ -37,10 +37,12 @@ rsync -aHAXxv --numeric-ids --delete --progress -e "ssh -T -c arcfour -o Compres
 
 
 ========
+
 rsync -avzh --progress --delete /media/tomiko/Anime/ /media/ayaka/Anime
 
 
 ======== KOBO
+
 mount -t vfat /dev/sda /home/vicfred/ayaka/ -o rw,uid=1000,gid=1000
 rsync -avzh --progress --delete --no-perms /home/vicfred/data/ebooks/math/ /home/vicfred/kobo/math
 rsync -avzh --progress --delete --no-perms /home/vicfred/data/ebooks/compsci/ /home/vicfred/kobo/compsci
