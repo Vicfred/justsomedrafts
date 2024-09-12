@@ -46,3 +46,7 @@ rsync -avzh --progress --delete /media/tomiko/Anime/ /media/ayaka/Anime
 mount -t vfat /dev/sda /home/vicfred/ayaka/ -o rw,uid=1000,gid=1000
 rsync -avzh --progress --delete --no-perms /home/vicfred/data/ebooks/math/ /home/vicfred/kobo/math
 rsync -avzh --progress --delete --no-perms /home/vicfred/data/ebooks/compsci/ /home/vicfred/kobo/compsci
+
+======== Sync only md files
+
+rsync -avzh --progress --prune-empty-dirs --include "*/"  --include="*.md" --exclude="*" vicfred@cyberia.moe:flatnotes/data/ ~/src/flatnotes/notes
