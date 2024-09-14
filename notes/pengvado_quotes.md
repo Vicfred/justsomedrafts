@@ -1,4 +1,3 @@
-```
 (Shamelessly copied from the similar Michael Niedermayer page)
 How can one explain the phenomenon that is Loren Merritt? Perhaps he is a superintelligent alien sent to observe us, who hacks on x264 and ffmpeg for amusement. It's also possible he's either a cybernetically enhanced human, or a wildly successful AI project. Either way, there must be great wisdom contained in his writing. Perhaps most of this is contained in code. But for laypeople, studying some of his quotes might provide some benefits.
 
@@ -501,4 +500,3 @@ Miscellaneous
 <Dark_Shikari> Unless it's an n.
 <pengvado> n is a vowel
 <pengvado> you know it is because it has its own character
-```
