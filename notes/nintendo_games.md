@@ -1,0 +1,25 @@
+- All pokemon main series games in japanese with box from gameboy to switch
+- youkai watch 1
+- fire emblem engage
+- fire emblen three houses
+- fire emblem three hopes
+- dragon quest xi definitive edition
+- biohazard (resident evil) origins collection (includes 0 and 1)
+- nier: automata
+- dragon ball z kakarot
+- persona 4 the ultimax
+- persona 5 tactica
+- persona 5 the royal
+- metal gear solid master collection volume 1 (includes 1, 2 and 3)
+- zelda skyward sword
+- zelda breath of the wild
+- zelda tears of the kingdom
+- kanken smart taisaku
+- mario kart 8 deluxe
+- doubutsu no mori (animal crossing)
+- smash brothers ultimate
+- splatoon 3
+- bravely default II
+- octopath traveler I and II
+- triangle strategy
+- tactics ogre reborn
