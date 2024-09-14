@@ -75,6 +75,20 @@ for video_file in *.mp4; do
   ffmpeg -i "$video_file" -c:v libx265 -map_metadata 0 -movflags use_metadata_tags -crf 28 -preset slow -c:a aac -b:a 128k compressed/"$filename".mp4
 done
 ```
+> add_bars_instagram.sh
+```bash
+#!/bin/bash
+for image_file in *.jpg; do
+  width=$(identify -format '%w' "$image_file")
+  height=$(identify -format '%h' "$image_file")
+  width_difference=$((height * 4/5 - width))
+  bar_size=$((width_difference/2))
+  echo "adding bar of size" $bar_size
+  convert $image_file -bordercolor black -border $((bar_size))x0 -quality 100 $image_file
+  echo "resizing from" $width "x" $height "to 1080x1350"
+  convert $image_file -resize 1080x1350 -quality 95 $image_file
+done
+```
 ___
 
 # Video utilities
