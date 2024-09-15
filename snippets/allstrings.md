@@ -1,4 +1,4 @@
-```c++
+```cpp
   set<string> valid{"a", "b", "c", "?"};
   for(const auto& i : valid) {
     for(const auto& j : valid) {
