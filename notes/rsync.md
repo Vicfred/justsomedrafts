@@ -56,5 +56,5 @@ rsync -avzh --progress --delete --no-perms /home/vicfred/data/ebooks/compsci/ /h
 
 ======== Sync only md files
 ```
-rsync -avzh --progress --prune-empty-dirs --delete --include "*/"  --include="*.md" --exclude="*" vicfred@cyberia.moe:flatnotes/data/ ~/src/noto/notes
+rsync -avzh --progress --prune-empty-dirs --delete --dry-run --include "*/"  --include="*.md" --include="*.jpg" --include="*.png" --exclude="*" vicfred@cyberia.moe:flatnotes/data/ ~/src/noto/notes
 ```
