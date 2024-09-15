@@ -10,12 +10,11 @@ important videos: compress at crf 32 - 28 (lower is better quality)
 store local RAW files for the camera
 backup pixel 8 pro photos at 100% resolution and 85% image quality
 
-normal videos: NO resize and compress videos at crf 24 - 26
-important videos: compress videos at crf 20-24 (lower is better quality)
+normal videos: NO resize and compress videos at crf 35 (24 - 26 for x265)
+important videos: compress videos at crf 28 (20-24 for x265) (lower is better quality)
 ___
 
 > batch\_image\_compress.sh
-
 ```bash
 #!/bin/bash
 for image_file in *.jpg; do
@@ -27,7 +26,6 @@ done
 ```
 
 > batch\_image\_resize\_compress.sh
-
 ```bash
 #!/bin/bash
 for image_file in *.jpg; do
@@ -40,6 +38,7 @@ for image_file in *.jpg; do
   echo "Compressing" $image_file "by" $compression"%" and resizing to ${height}x${width}
 done
 ```
+
 > batch_video_archive.sh
 ```bash
 #!/bin/bash
@@ -47,10 +46,18 @@ for video_file in *.mp4; do
   filename=$(basename -- "$video_file")
   extension="${filename##*.}"
   filename="${filename%.*}"
-  # set appropiate crf according to how important the video is, minimum 20, lower is higher quality
-  ffmpeg -i "$video_file" -c:v libx265 -map_metadata 0 -movflags use_metadata_tags -crf 24 -preset slow -c:a aac -b:a 128k compressed/"$filename".mp4
+  # set appropiate crf according to how important the video is
+  # av1, default crf is 35 lower is better quality, default preset is 10 lower is slower
+  # normal video, not so important
+  ffmpeg -i "$video_file" -c:v libsvtav1 -map_metadata 0 -movflags use_metadata_tags -crf 28 -preset 4 -c:a libopus -b:a 128k compressed/"$filename".mp4
+  # important video, consider not re-encoding instead, maybe only use for professional camera videos
+  #ffmpeg -i "$video_file" -c:v libsvtav1 -map_metadata 0 -movflags use_metadata_tags -crf 24 -preset 4 -c:a libopus -b:a 128k compressed/"$filename".mp4
+
+  # x265 DEPRECATED FOR ARCHIVING
+  #ffmpeg -i "$video_file" -c:v libx265 -map_metadata 0 -movflags use_metadata_tags -crf 24 -preset slow -c:a aac -b:a 128k compressed/"$filename".mp4
 done
 ```
+
 >  batch_video_online.sh
 ```bash
 #!/bin/bash
@@ -59,22 +66,15 @@ for video_file in *.mp4; do
   extension="${filename##*.}"
   filename="${filename%.*}"
   # 2/3 of 1080p is 720p
-  ffmpeg -i "$video_file" -c:v libx265 -vf scale="iw*2/3:ih*2/3" -map_metadata 0 -movflags use_metadata_tags -crf 32 -preset slow -c:a aac -b:a 96k compressed/"$filename".mp4
-  # this is double the size, still very light
-  #ffmpeg -i "$video_file" -c:v libx265 -map_metadata 0 -movflags use_metadata_tags -crf 32 -preset slow -c:a aac -b:a 128k compressed/"$filename".mp4
+  # av1
+  ffmpeg -i "$video_file" -c:v libsvtav1 -vf scale="iw*2/3:ih*2/3" -map_metadata 0 -movflags use_metadata_tags -crf 50 -preset 6 -c:a libopus -b:a 96k compressed/"$filename".mp4
+  # 720p vertical video
+  #ffmpeg -i "$video_file" -c:v libsvtav1 -vf scale="720:-1" -map_metadata 0 -movflags use_metadata_tags -crf 50 -preset 6 -c:a libopus -b:a 96k compressed/"$filename".mp4
+  # x265 DEPRECATED
+  #ffmpeg -i "$video_file" -c:v libx265 -vf scale="iw*2/3:ih*2/3" -map_metadata 0 -movflags use_metadata_tags -crf 32 -preset slow -c:a aac -b:a 96k compressed/"$filename".mp4
 done
 ```
->  batch_video_compress.sh
-```bash
-#!/bin/bash
-for video_file in *.mp4; do
-  filename=$(basename -- "$video_file")
-  extension="${filename##*.}"
-  filename="${filename%.*}"
-  # default crf and slow preset
-  ffmpeg -i "$video_file" -c:v libx265 -map_metadata 0 -movflags use_metadata_tags -crf 28 -preset slow -c:a aac -b:a 128k compressed/"$filename".mp4
-done
-```
+
 > add_bars_instagram.sh
 ```bash
 #!/bin/bash
@@ -164,7 +164,12 @@ exiftool -ext jpg '-FileName<CreateDate' -d %Y_%m_%d__%H_%M_%S%%-c.%%e .
 
 View photo metadata
 ```
-exif DSC00769.jpg
+exif input.jpg
+```
+
+View photo metadata using imagemagick
+```
+identify -verbose input.jpg
 ```
 
 Sometimes the file created date is wrong even if the taken date is right (check with ls -al and exif file.JPG)
@@ -195,6 +200,11 @@ exiftool -tagsFromFile source.mp4 -All:All output.mp4
 Set specific date
 ```
 exiftool -AllDates="2023-04-02 08:01:00" 2023_04_02__08_01_43.jpg
+```
+
+Copy GPS information from one picture into all pictures of a directory 
+```
+exiftool -tagsfromfile SRCFILE -gps:all -wm cg DIR
 ```
 ___
 
