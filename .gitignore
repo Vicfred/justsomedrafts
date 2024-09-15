@@ -4,9 +4,12 @@
 # except source files in these folders
 !notes/
 !snippets/
+!notes/attachments/
 
 # except markdown files
 !*.md
+!*.jpg
+!*.png
 
 # dont ignore gitignore
 !.gitignore
