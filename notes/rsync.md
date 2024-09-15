@@ -25,28 +25,36 @@
 --delete
 
 > doesn't create Books directory
+```
 rsync -avh --progress --delete --dry-run /media/asuka/Books/ 192.168.1.102:Books #Sylvanas Books
+```
 
 > creates Books directory, ie, it creates /home/vicfred/data/Books
+```
 rsync -avh --progress --delete --dry-run /home/vicfred/ayaka/Books /home/vicfred/data
+```
 
 > see https://gist.github.com/KartikTalwar/4393116
+```
 rsync -aHAXxv --numeric-ids --delete --progress -e "ssh -T -c arcfour -o Compression=no -x" user@<source>:<source_dir> <dest_dir>
+```
 
 ^ consider turning off compression
 
 
 ========
-
+```
 rsync -avzh --progress --delete /media/tomiko/Anime/ /media/ayaka/Anime
-
+```
 
 ======== KOBO
-
+```
 mount -t vfat /dev/sda /home/vicfred/ayaka/ -o rw,uid=1000,gid=1000
 rsync -avzh --progress --delete --no-perms /home/vicfred/data/ebooks/math/ /home/vicfred/kobo/math
 rsync -avzh --progress --delete --no-perms /home/vicfred/data/ebooks/compsci/ /home/vicfred/kobo/compsci
+```
 
 ======== Sync only md files
-
+```
 rsync -avzh --progress --prune-empty-dirs --delete --include "*/"  --include="*.md" --exclude="*" vicfred@cyberia.moe:flatnotes/data/ ~/src/noto/notes
+```
