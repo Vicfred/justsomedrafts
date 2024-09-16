@@ -1,3 +1,5 @@
+>https://www.japaneseverbconjugator.com/JVerbList.asp
+
 足す
 答える
 着く
