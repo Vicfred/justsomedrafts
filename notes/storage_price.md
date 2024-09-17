@@ -1,10 +1,10 @@
-# Storage Prices September 2024
+# Storage Prices
 ___
 ## Hard disks
 
 ### Western Digital WD Red Pro NAS Internal Hard Drive HDD - 7200 RPM, SATA 6 Gb/s, CMR, 512 MB Cache, 3.5"
 
-| Disk Size | Price per TB |
+| Disk Size | Price per TB 09/24 |
 |-----------|--------------|
 | 24        | 23.750       |
 | 22        | 20.454       |
@@ -23,7 +23,7 @@ ___
 
 ### Seagate IronWolf Pro 7200 RPM 256MB Cache SATA 6.0Gb/s 3.5" Internal Hard Drive
 
-| Disk Size | Price per TB |
+| Disk Size | Price per TB 09/24 |
 |-----------|--------------|
 | 24        | 18.333       |
 | 22        | 18.636       |
